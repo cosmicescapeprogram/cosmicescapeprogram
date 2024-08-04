@@ -49,21 +49,14 @@ GPIO库函数：    
            GPIO_DeInit（GPIOx）指定的GPIO外设被复位  
            AFIODeInit（）复位AFIO外设  
            GPIO_Init（）用结构体的参数初始化GPIO口（先定义结构体变量，再给结构体赋值，这个函数内部会自动读取结构体的值，自动把外设的各个参数配置好）      
-           GPIO_StructInit（）把结构体变量赋一个默认值
+           GPIO_StructInit（）把结构体变量赋一个默认值 
            8个GPIO读写函数
 #### 三、使用输出或者输入的函数控制GPIO口     
 8个GPIO读写函数：      
-             GPIO_SetBits（GPIO_x，GPIO_Pin）把指定的端口设定为高电平把指定的端口设置为高电平 **可用或方式设定多个端口**
+             GPIO_SetBits（GPIO_x，GPIO_Pin）把指定的端口设定为高电平把指定的端口设置为高电平 **可用或方式设定多个端口**  
              GPIO_ReseBits（GPIO_x，GPIO_Pin）把指定的端口设置为低电平  
              GPIO_WriteBit（GPIO_x，GPIO_Pin，BitValue）根据第三个参数的值设置指定的端口  
              GPIO_Write（GPIO_x，PortValue）同时对16个端口进行写入操作  
-             
-                 
-
-
-
-
-
-
-
-
+### 输入模式使用步骤        
+##### 按键抖动
+由于按键内部使用的是机械式弹簧片来进行通断的，所以在按下和松手的瞬间会伴随有一连串的抖动      
