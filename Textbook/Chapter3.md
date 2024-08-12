@@ -51,7 +51,7 @@ def predict(network, x):
     y = softmax(a3)
     return y
 ```
-二、評價識別精度（能在多大程度上正確分類）  
+二、評價識別精度（能在多大程度上正確分類）      
 ```ruby
 x, t = get_data()
 network = init_network()
@@ -65,6 +65,30 @@ for i in range(len(x)):
 
 print("Accuracy:" + str(float(accuracy_cnt) / len(x)))
 ```
++ 正規化：把數據限定到某個範圍內
++ **預處理：對神經網絡的輸入數據進行某種既定的轉換**      
+### 3.6.3批處理（打包式的輸入數據）      
+> 可以大幅縮短每張圖像的處理時間
+批處理代碼 
+```ruby
+x, t = get_data()
+network = init_network()
 
+**batch_size = 100** # 批数量      
+accuracy_cnt = 0
 
- 
+**
+for i in range(0, len(x), batch_size):   
+    x_batch = x[i:i+batch_size]
+    y_batch = predict(network, x_batch)
+    p = np.argmax(y_batch, axis=1)
+    accuracy_cnt += np.sum(p == t[i:i+batch_size])   
+**
+print("Accuracy:" + str(float(accuracy_cnt) / len(x)))
+```
+### 3.7小結
+神經網絡與感知機的比較：    
++ 相同點：信號的按層傳遞     
++ 不同點：向下一個神經元發送信號時改變信號的激活函數不同
+  **神經網絡使用平滑變化的sigmoid函數，感知機使用信號急劇變化的階躍函數**
+    
