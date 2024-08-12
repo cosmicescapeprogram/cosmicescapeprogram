@@ -36,7 +36,7 @@ def cross_entropy_error(y, t):
 ```
 ### 4.2.3 mini-batch學習（利用一部分樣本數據近似地計算總體）  
 交叉熵誤差（獲得單個數據的“平均損失函數”）：                                        
-          $E=-\frab{1}{N} \sum_n \sum_k t_{nk} log y_{nk}$  
+          $E=-\frac{1}{N} \sum_n \sum_k t_{nk} log y_{nk}$  
 mini-batch學習:從訓練數據中選出一批數據，然後對每個mini-batch進行學習   
 從訓練數據中隨機選擇製定個數的數據：np.random.choice()   
 ### 4.2.4 mini-batch版交叉熵誤差的實現  
