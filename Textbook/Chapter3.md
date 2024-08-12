@@ -58,7 +58,7 @@ network = init_network()
 
 accuracy_cnt = 0
 for i in range(len(x)):
-    y = predict(network, x[i]) #以NumPy数组的形式输出各个标签对应的概率   
+    y = predict(network, x[i]) # 以NumPy数组的形式输出各个标签对应的概率   
     p = np.argmax(y) # 获取概率最高的元素的索引
     if p == t[i]:
         accuracy_cnt += 1
