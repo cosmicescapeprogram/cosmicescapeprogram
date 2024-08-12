@@ -121,26 +121,38 @@ def gradient_descent(f, init_x, lr=0.01, step_num=100):
     return x
 /*参数 f是要进行最优化的函数,init_x是初始值,lr是学习率learning rate,step_num是梯度法的重复次数,numerical_gradient(f,x)会求函数的梯度，用该梯度乘以学习率得到的值进行更新操作，由 step_num指定重复的次数。*/
 ```
+#### **4.4.2神經網絡的梯度（損失函數關於權重參數的梯度）             
+$\frac{\partial L}{\partial **W**}$表示$\omega$稍微變化時，損失函數L會發生多大的變化  
+```ruby
+import sys, os
+sys.path.append(os.pardir)
+import numpy as np
+from common.functions import softmax, cross_entropy_error
+from common.gradient import numerical_gradient
 
+class simpleNet:
+    def __init__(self):
+        self.W = np.random.randn(2,3) # 用高斯分布进行初始化
+    def predict(self, x):
+        return np.dot(x, self.W)
+    def loss(self, x, t):
+        z = self.predict(x)
+        y = softmax(z)
+        loss = cross_entropy_error(y, t)
 
-
-
-
-
-
-
-
+        return loss
+```
+### 4.5學習算法的實現
+神經網絡的學習步驟（隨機梯度下降法SGD）：  
+                  1. mini-batch：從訓練數據中**隨機**選出一部分數據，這部分數據稱為mini-batch，我們的目標是減小mini-batch的損失函數的值  
+                  2.計算梯度：為了減小mini-batch的損失函數的值，需要求出各個權重參數的梯度    
+                  3.更新參數：將權重參數沿梯度方向進行微小更新    
+                  4.重複：重複步驟1、2、3  
+#### 4.5.1 2層神經網絡的類
+TwolayerNet
+#### 4.5.2 mini-batch的實現
+#### 4.5.3基於測試數據的評價
+                  
 
 
           
-
-
-
-
-
-
-
-
-
-
-
