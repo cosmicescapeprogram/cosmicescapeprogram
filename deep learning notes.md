@@ -12,7 +12,7 @@ load_minst函數的使用：
 >>+  flatten设置是否展开输入图像（变成一维数组）（如果将该参数设置为 False，则输入图像为1 × 28 × 28的三维数组；若设置为 True，则输入图像会保存为由784个元素构成的一维数组）**显示图像时，需要把它变为原来的28像素 × 28像素的形状。可以通过 reshape()方法的参数指定期望的形状，更改NumPy数组的形状**
 >>+  one_hot_label设置是否将标签保存为one-hot表示（one-hot representation,one-hot表示是仅正确解标签为1，其余皆为0的数组，就像 [0,0,1,0,0,0,0,0,0,0]这样）（当 one_hot_label为 False时，只是像7、2这样简单保存正确解标签；当 one_hot_label为 True时，标签则保存为one-hot表示）
 
-···
+```ruby
 import sys, os  
 sys.path.append(os.pardir)   
 import numpy as np
@@ -30,18 +30,8 @@ print(img.shape) # (784,)
 img = img.reshape(28, 28) # 把图像的形状变成原来的尺寸
 print(img.shape) # (28, 28)
 img_show(img)
-···
+```
 ### 3.6.2神經網絡的推理處理
-···   
-improt sys,os         
-sys.path.append(os.pardir)  
-import numpy as np  
-from POLimport Image  
-
-def img_show(img):  
-    pil_img  
-···  
-
 
 
 
