@@ -34,8 +34,32 @@ def cross_entropy_error(y, t):
     delta = 1e-7
     return -np.sum(t * np.log(y + delta))
 ```
-### 4.2.3mini——batch學習
+### 4.2.3 mini-batch學習（利用一部分樣本數據近似地計算總體）  
+交叉熵誤差（獲得單個數據的“平均損失函數”）：                                        
+          $E=-\frab{1}{N} \sum_n \sum_k t_{nk} log y_{nk}$  
+mini-batch學習:從訓練數據中選出一批數據，然後對每個mini-batch進行學習   
+從訓練數據中隨機選擇製定個數的數據：np.random.choice()   
+### 4.2.4 mini-batch版交叉熵誤差的實現  
+```
+def cross_entropy_error(y, t):
+    if y.ndim == 1: 
+        t = t.reshape(1, t.size)
+        y = y.reshape(1, y.size)
 
+    batch_size = y.shape[0]
+    return -np.sum(t * np.log(y + 1e-7)) / batch_size
+```
+當監督數據是標簽形式（非one-hot表示）  
+```
+def cross_entropy_error(y, t):
+    if y.ndim == 1:
+        t = t.reshape(1, t.size)
+        y = y.reshape(1, y.size)
+    batch_size = y.shape[0]
+    return -np.sum(np.log(y[np.arange(batch_size), t] + 1e-7)) / batch_size
+```
+#### 4.2.5為何要設定損失函數
+在進行神經網絡的學習時，不能將識別精度作為指標。因為如果以識別精度為指標，則參數的導數在絕大多數地方都會變為0.  
 
 
 
