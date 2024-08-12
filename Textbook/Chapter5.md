@@ -47,10 +47,10 @@ def backward(self, dout):
         return dx
 ```
 #### 5.5.2 Sigmoid層 
-sigmoid函數：$y=\frac{1}{1+exp(-x)$  
-反向傳播為$\frac{\partial L}{\partial y} y^2 exp(-x)$ 
+sigmoid函數：$y=\frac{1}{1+exp(-x)}$    
+反向傳播為$\frac{\partial L}{\partial y} y^2 exp(-x)$  
           $\frac{\partial L}{\partial y} y(1-y)$ 
-```
+```ruby
 class Sigmoid:
     def __init__(self):
         self.out = None
@@ -71,7 +71,7 @@ class Sigmoid:
 #### 5.6.3 Softmax-with-Loss層
 softmax（輸出層函數）會將輸入值正規化後再輸出  
 （神經網絡的推理通常不使用Softmax層，但神經網絡的學習階段則需要）  
-```
+```ruby
 class SoftmaxWithLoss:
     def __init__(self):
         self.loss = None # 损失
