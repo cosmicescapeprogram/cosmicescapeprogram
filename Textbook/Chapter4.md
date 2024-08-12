@@ -40,7 +40,7 @@ $E=-\frac{1}{N} \sum_n \sum_k t_{nk} log y_{nk}$
 mini-batch學習:從訓練數據中選出一批數據，然後對每個mini-batch進行學習   
 從訓練數據中隨機選擇製定個數的數據：np.random.choice()   
 ### 4.2.4 mini-batch版交叉熵誤差的實現  
-```
+```ruby
 def cross_entropy_error(y, t):
     if y.ndim == 1: 
         t = t.reshape(1, t.size)
@@ -50,7 +50,7 @@ def cross_entropy_error(y, t):
     return -np.sum(t * np.log(y + 1e-7)) / batch_size
 ```
 當監督數據是標簽形式（非one-hot表示）  
-```
+```ruby
 def cross_entropy_error(y, t):
     if y.ndim == 1:
         t = t.reshape(1, t.size)
