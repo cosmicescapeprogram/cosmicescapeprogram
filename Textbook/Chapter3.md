@@ -52,7 +52,7 @@ def predict(network, x):
     return y
 ```
 二、評價識別精度（能在多大程度上正確分類）  
-```
+```ruby
 x, t = get_data()
 network = init_network()
 
