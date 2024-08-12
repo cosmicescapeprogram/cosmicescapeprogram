@@ -47,7 +47,7 @@ def backward(self, dout):
         return dx
 ```
 #### 5.5.2 Sigmoid層 
-sigmoid函數：$y=\frac{1}{1+exp(-x)}$  
+sigmoid函數： $y=\frac{1}{1+exp(-x)}$  
 反向傳播為 $\frac{\partial L}{\partial y} y^2exp(-x)$  
           $\frac{\partial L}{\partial y} y(1-y)$ 
 ```ruby
