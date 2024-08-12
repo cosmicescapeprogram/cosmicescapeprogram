@@ -48,8 +48,9 @@ def backward(self, dout):
 ```
 #### 5.5.2 Sigmoid層 
 sigmoid函數： $y=\frac{1}{1+exp(-x)}$  
-反向傳播為 $\frac{\partial L}{\partial y} y^2exp(-x)$  
-          $\frac{\partial L}{\partial y} y(1-y)$ 
+反向傳播為 
+$\frac{\partial L}{\partial y} y^2exp(-x)$  
+$\frac{\partial L}{\partial y} y(1-y)$ 
 ```ruby
 class Sigmoid:
     def __init__(self):
@@ -88,7 +89,16 @@ class SoftmaxWithLoss:
         return dx
 ```
 ### 5.7誤差反向傳播法的實現 
+#### 5.7.1神經網絡學習的全貌圖
+神經網絡學習步驟：
+                1. mini-bitch：從訓練數據中隨機選擇一部分數據  
+                2. 計算梯度：**計算損失函數關於各個權重參數的梯度**   
+                3. 更新參數：將權重參數沿梯度方向進行微小的更新  
+                4. 重複  
+#### 5.7.2 對應誤差反向傳播法的神經網絡的實現
 
+
+                
 
 
 
