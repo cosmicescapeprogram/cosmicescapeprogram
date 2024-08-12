@@ -26,7 +26,7 @@ def mean_squared_error(y, t):
 ```
 ### 4.2.2交叉熵誤差       
 交叉熵誤差：
-          $E=-\sum_k t_k log y_k$；  
+          $E=-\sum_k t_k \log y_k$；  
           $y_k$表示神經網絡的輸出，$t_k$是正確解標籤（one-hot表示，只有正確解標籤的索引為1，其他均為0）  
 （實際上只計算正確解標籤的輸出的自然對數，交叉熵誤差的值是有正確解標籤所對應的輸出結果決定的）  
 ```ruby
@@ -36,7 +36,7 @@ def cross_entropy_error(y, t):
 ```
 ### 4.2.3 mini-batch學習（利用一部分樣本數據近似地計算總體）  
 交叉熵誤差（獲得單個數據的“平均損失函數”）：
-$E=-\frac{1}{N} \sum_n \sum_k t_{nk} log y_{nk}$  
+$E=-\frac{1}{N} \sum_n \sum_k t_{nk} \log y_{nk}$  
 mini-batch學習:從訓練數據中選出一批數據，然後對每個mini-batch進行學習   
 從訓練數據中隨機選擇製定個數的數據：np.random.choice()   
 ### 4.2.4 mini-batch版交叉熵誤差的實現  
@@ -83,6 +83,60 @@ def numerical_diff(f, x):
 #### 4.3.3偏導數
 將多個變量中的某一變量定為目標變量，並將其他變量固定巍峨某個值  
 ### 4.4梯度（由全部變量的偏導數匯總而成的向量）  
+```ruby
+def numerical_gradient(f, x):
+    h = 1e-4 # 0.0001
+    grad = np.zeros_like(x) # 生成和x形状相同、所有元素都为0的数组
+
+    for idx in range(x.size):
+        tmp_val = x[idx]
+        # f(x+h)的计算
+        x[idx] = tmp_val + h
+        fxh1 = f(x)
+
+        # f(x-h)的计算
+        x[idx] = tmp_val - h
+        fxh2 = f(x)
+
+        grad[idx] = (fxh1 - fxh2) / (2*h)
+        x[idx] = tmp_val # 还原值
+    return grad
+```
+**梯度會指向各點處的函數值降低的方向：*梯度指示的方向是各點處的函數值減小最多的方向***         
+#### 4.4.1梯度法（巧妙地用梯度來尋找損失函數*最小值*）      
+*梯度表示的是各點處的函數值減小最多的方向**無法保證梯度所指的方向就是函數的最小值或真正應該前進的方向***（實際上，在複雜的函數中，梯度指示的方向基本上都不是函數最小處）  
+梯度法：通過不斷地沿梯度方向前進，逐漸減小函數值的過程（函數的取值從當前位置沿著梯度方向前進一定距離，然後在新的地方重新求梯度，再沿著新題度方向前進，如此反復，不斷地沿梯度方向前進）  
+數學式：         
+        $x_0 = x_0 - \eta\frac{\vartheata f}{\vartheta x_0}$ 
+        $x_1 = x_1 - \eta\frac{\vartheata f}{\vartheta x_1}$   
+$\eta$表示更新量，在神經網絡的學習中，稱為**學習率**（決定一次學習中，應該學習多少，以及在多大程度上更新參數）  
+        *需事先確定為某個值*：一般一邊改變學習率的值，一邊確認學習是否正確進行了  
+梯度下降法代碼：  
+```ruby
+def gradient_descent(f, init_x, lr=0.01, step_num=100):
+    x = init_x
+    for i in range(step_num):
+        grad = numerical_gradient(f, x)
+        x -= lr * grad
+    return x
+/*参数 f是要进行最优化的函数,init_x是初始值,lr是学习率learning rate,step_num是梯度法的重复次数,numerical_gradient(f,x)会求函数的梯度，用该梯度乘以学习率得到的值进行更新操作，由 step_num指定重复的次数。*/
+```
+
+
+
+
+
+
+
+
+
+
+
+          
+
+
+
+
 
 
 
