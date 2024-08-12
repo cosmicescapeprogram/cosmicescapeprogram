@@ -25,7 +25,8 @@ def mean_squared_error(y, t):
     return 0.5 * np.sum((y-t)**2)
 ```
 ### 4.2.2交叉熵誤差       
-交叉熵誤差：$E=-\sum_k t_k log y_k$；  
+交叉熵誤差：
+          $E=-\sum_k t_k log y_k$；  
           $y_k$表示神經網絡的輸出，$t_k$是正確解標籤（one-hot表示，只有正確解標籤的索引為1，其他均為0）  
 （實際上只計算正確解標籤的輸出的自然對數，交叉熵誤差的值是有正確解標籤所對應的輸出結果決定的）  
 ```ruby
@@ -34,7 +35,8 @@ def cross_entropy_error(y, t):
     return -np.sum(t * np.log(y + delta))
 ```
 ### 4.2.3 mini-batch學習（利用一部分樣本數據近似地計算總體）  
-交叉熵誤差（獲得單個數據的“平均損失函數”）：$E=-\frac{1}{N} \sum_n \sum_k t_{nk} log y_{nk}$  
+交叉熵誤差（獲得單個數據的“平均損失函數”）：
+$E=-\frac{1}{N} \sum_n \sum_k t_{nk} log y_{nk}$  
 mini-batch學習:從訓練數據中選出一批數據，然後對每個mini-batch進行學習   
 從訓練數據中隨機選擇製定個數的數據：np.random.choice()   
 ### 4.2.4 mini-batch版交叉熵誤差的實現  
