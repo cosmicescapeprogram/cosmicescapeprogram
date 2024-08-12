@@ -122,7 +122,7 @@ def gradient_descent(f, init_x, lr=0.01, step_num=100):
 /*参数 f是要进行最优化的函数,init_x是初始值,lr是学习率learning rate,step_num是梯度法的重复次数,numerical_gradient(f,x)会求函数的梯度，用该梯度乘以学习率得到的值进行更新操作，由 step_num指定重复的次数。*/
 ```
 #### **4.4.2神經網絡的梯度（損失函數關於權重參數的梯度）             
-$\frac{\partial L}{\partial **W**}$表示$\omega$稍微變化時，損失函數L會發生多大的變化  
+$\frac{\partial L}{\partial W}$ 表示$\omega$稍微變化時，損失函數L會發生多大的變化  
 ```ruby
 import sys, os
 sys.path.append(os.pardir)
