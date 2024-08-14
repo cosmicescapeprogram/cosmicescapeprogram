@@ -124,7 +124,7 @@ def gradient(self, x, t):
 求梯度的方法：  
             1.數值微分*方法簡單，不易出錯*      
           **2.解析性地求解數學式** （通過誤差反向傳播法在存在大量參數時仍能高效地計算梯度）*計算復雜，容易出錯*  
->**梯度確認**：比較數值微分和誤差反向傳播的結果（確認誤差反向傳播法是否正確）       
+>**梯度確認**：比較數值微分和誤差反向傳播的結果（確認誤差反向傳播法是否正確）*如果實現正確，誤差是接近0的很小的值*         
 ```ruby
 import sys, os
 sys.path.append(os.pardir)
@@ -145,10 +145,9 @@ grad_backprop = network.gradient(x_batch, t_batch)
 
 # 求各个权重的绝对误差的平均值
 for key in grad_numerical.keys():
-    diff = np.average( np.abs(grad_backprop[key] - grad_numerical[key]) )
-
+    diff = np.average( np.abs(grad_backprop[key]-grad_numerical[key]) )
     print(key + ":" + str(diff))
-
-
-
-
+```
+#### 5.7.4使用誤差反向傳播法的學習 
+代碼參考P160
+### 5.8小結
