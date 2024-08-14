@@ -68,7 +68,7 @@ class Sigmoid:
 ```
 ### 5.6 Affine/Softmax層的實現
 #### 5.6.1 Affine層
-#### 5.6.2 批版本的Affine層
+#### 5.6.2 批版本的Affine（映射）層  
 #### 5.6.3 Softmax-with-Loss層
 softmax（輸出層函數）會將輸入值正規化後再輸出  
 （神經網絡的推理通常不使用Softmax層，但神經網絡的學習階段則需要）  
@@ -96,9 +96,58 @@ class SoftmaxWithLoss:
                 3. 更新參數：將權重參數沿梯度方向進行微小的更新  
                 4. 重複  
 #### 5.7.2 對應誤差反向傳播法的神經網絡的實現
+**神經網絡的層保存為有序字典OrdereDict**（神經網絡的正向傳播只需按照添加元素的順序調用各層的forward（）方法，反向傳播只需要按照相反的順序調用各層即可）  
+```ruby
+def gradient(self, x, t):
+    # forward
+    self.loss(x, t)
 
+    # backward
+    dout = 1
+    dout = self.lastLayer.backward(dout)
 
-                
+    layers = list(self.layers.values())
+    layers.reverse()
+    for layer in layers:
+        dout = layer.backward(dout)
+
+    # 设定    
+    grads = {}
+    grads['W1'] = self.layers['Affine1'].dW
+    grads['b1'] = self.layers['Affine1'].db
+    grads['W2'] = self.layers['Affine2'].dW
+    grads['b2'] = self.layers['Affine2'].db
+
+    return grads
+```
+#### 5.7.3誤差反向傳播法的梯度確認
+求梯度的方法：  
+            1.數值微分*方法簡單，不易出錯*      
+          **2.解析性地求解數學式** （通過誤差反向傳播法在存在大量參數時仍能高效地計算梯度）*計算復雜，容易出錯*  
+>**梯度確認**：比較數值微分和誤差反向傳播的結果（確認誤差反向傳播法是否正確）       
+```ruby
+import sys, os
+sys.path.append(os.pardir)
+import numpy as np
+from dataset.mnist import load_mnist
+from two_layer_net import TwoLayerNet
+ 
+# 读入数据
+(x_train, t_train), (x_test, t_test) = load_mnist(normalize=True, one_hot_label = True)
+
+network = TwoLayerNet(input_size=784,hidden_size=50,output_size=10)
+
+x_batch = x_train[:3]      
+t_batch = t_train[:3]
+
+grad_numerical = network.numerical_gradient(x_batch, t_batch)
+grad_backprop = network.gradient(x_batch, t_batch)
+
+# 求各个权重的绝对误差的平均值
+for key in grad_numerical.keys():
+    diff = np.average( np.abs(grad_backprop[key] - grad_numerical[key]) )
+
+    print(key + ":" + str(diff))
 
 
 
