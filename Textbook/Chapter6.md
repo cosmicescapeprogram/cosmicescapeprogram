@@ -28,7 +28,7 @@ SGD低效的原因：梯度的方向沒有指向最小值的方向    
 替代：Momentun、AdaGrad、Adam  
 #### 6.1.4 Momentum（動量）  
 數學式:  
-**$$\nu$$** $$\leftarrow \alpha$$ **$$\nu$$** - $$\eta \frac{\partialL}{\partialW}$$  
+**$$\nu$$** $$\leftarrow \alpha$$ **$$\nu$$** - $$\eta \frac{\partial L}{\partial W}$$  
 **W** $$\leftarrow$$ **W** + **$$\nu$$**      
 + **W**:需要更新的權重參數             
 + $$\frac{\partial L}{\partial W}$$損失函數關於**W**的梯度 
