@@ -7,7 +7,7 @@
 **SGD**策略：冒險家通過當前位置的坡度（通過腳底感受地面的傾斜情況），朝著當前位置的坡度最大的方向前進      
 #### 6.1.2 SGD        
 數學式： 
-**W** $$\leftarrow$$ **W** -$$\eta \frac{\partial L}{\partial W}$$  
+**W** $$\leftarrow$$ **W** - $$\eta \frac{\partial L}{\partial W}$$  
 + **W**:需要更新的權重參數             
 + $$\frac{\partial L}{\partial W}$$損失函數關於**W**的梯度 
 + $$\eta$$ 表示學習率（會取確定的值）
@@ -29,7 +29,7 @@ SGD低效的原因：梯度的方向沒有指向最小值的方向    
 #### 6.1.4 Momentum（動量）  
 數學式:  
 **$$\nu$$** $$\leftarrow \alpha$$ **$$\nu$$** - $$\eta \frac{\partial L}{\partial W}$$  
-**W** $$\leftarrow W + \nu$$        
+**W** $$\leftarrow$$ **W** + **$$\nu$$**                           
 + **W**:需要更新的權重參數             
 + $$\frac{\partial L}{\partial W}$$損失函數關於**W**的梯度 
 + $$\eta$$ 表示學習率（會取確定的值）
