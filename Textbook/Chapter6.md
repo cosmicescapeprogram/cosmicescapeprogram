@@ -34,7 +34,7 @@ SGD低效的原因：梯度的方向沒有指向最小值的方向    
 + $$\frac{\partial L}{\partial W}$$損失函數關於**W**的梯度 
 + $$\eta$$ 表示學習率（會取確定的值）
 + **$$\nu$$**對應物理上的速度
-+ $$\alpha$$ **$$\nu$$**在物體不受任何力時，使物體逐漸減速（$$\alpha$$設定為0.9之類的值），對應物理上的地面摩擦或空氣阻力
++ $$\alpha$$**$$\nu$$**在物體不受任何力時，使物體逐漸減速（ $$\alpha$$設定為0.9之類的值），對應物理上的地面摩擦或空氣阻力
 ```ruby
 class Momentum:
     def __init__(self, lr=0.01, momentum=0.9):
@@ -112,7 +112,7 @@ Batch Norm：以進行學習時的mini-batch為單位，按mini-batch進行正�
 $$\mu \leftarrow \frac{1}{m} \sum_{i=1}^{m} x_i$$
 $$\sigma_B^2 \leftarrow \frac{1}{m} \sum_{i=1}^{m} (x_i - \mu_B)^2$$
 $$\widehat{x_i} \leftarrow \frac{x_i - \mu_B}{\sqrt{\sigma_B^2 + \varepsilon}$$  
-對輸入數據進行均值為0、方差為1（合適的分佈）的正規化（$$\varepsilon$$是一個微小值（比如10e-7等），防止出現除以0的情況）          
+對輸入數據進行均值為0、方差為1（合適的分佈）的正規化（ $$\varepsilon$$是一個微小值（比如10e-7等），防止出現除以0的情況）          
 
 
   
