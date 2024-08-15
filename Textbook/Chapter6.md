@@ -27,8 +27,8 @@ SGD的缺點：如果函數的形狀非均向（比如呈延伸狀），搜索�
 SGD低效的原因：梯度的方向沒有指向最小值的方向    
 替代：Momentun、AdaGrad、Adam  
 #### 6.1.4 Momentum（動量）  
-數學式: 
-$$\nu\leftarrow \alpha\nu - \eta \frac{\partial L}{\partialW}$$  
+數學式:  
+$$\nu\leftarrow \alpha\nu - \eta \frac{\partial L}{\partial W}$$  
 $$W\leftarrow W + \nu$$  
 
 
