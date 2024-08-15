@@ -56,12 +56,12 @@ class Momentum:
 #### 6.1.5 AdaGrad（Ada取自adaptive）  
 思想：為參數的每個元素適當地調整學習率（**學習率衰減**：一開始多學，然後逐漸少學）  
 數學式：  
-**h** $$\leftarrow$$ **h**+ $$\frac{\partial L}{\partial W} \odot \frac{partial L}{\partial W}$$  
-**W** $$\leftarrow$$ **W** - $$\eta\frac{1}{sqrt h} \frac{partial L}{\partial W}$$  
-+ **W**:需要更新的權重參數             
+**h** $$\leftarrow$$ **h**+ $$\frac{\partial L}{\partial W} \odot \frac{\partial L}{\partial W}$$  
+**W** $$\leftarrow$$ **W** - $$\eta\frac{1}{\sqrt{h}} \frac{\partial L}{\partial W}$$  
++ **W**:需要更新的權重參數               
 + $$\frac{\partial L}{\partial W}$$損失函數關於**W**的梯度 
 + $$\eta$$ 表示學習率（會取確定的值）
-+ **h**保存了以前的所有梯度值的平方和（$$\odot$$表示對應矩陣元素的乘法） 
++ **h**保存了以前的所有梯度值的平方和（ $$\odot$ $表示對應矩陣元素的乘法） 
 參數的元素中變動較大的元素的學習率將變小（按參數的元素進行學習率的衰減，使變動大的參數的學習率逐漸減小）
 ```ruby
 class AdaGrad:
