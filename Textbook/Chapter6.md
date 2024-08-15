@@ -109,7 +109,7 @@ Batch Norm的優點：
 + 抑制過度擬合（降低Dropout等的必要性）
 Batch Norm（向神經網絡中插入對數據分佈進行正規化的層）：以進行學習時的mini-batch為單位，按mini-batch進行正規化
 
-1.正規化數學式：
+1.正規化數學式：  
 $$\mu\leftarrow \frac{1}{m} \sum_{i=1}^{m} x_i$$
 $$\sigma_{B}^{2 }\leftarrow \frac{1}{m} \sum_{i=1}^{m} (x_i - \mu_B)^2$$
 $$\widehat{x_i} \leftarrow \frac{x_i - \mu_B}{\sqrt{\sigma_B^2 + \varepsilon}$$  
