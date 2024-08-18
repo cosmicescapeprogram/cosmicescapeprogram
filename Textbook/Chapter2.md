@@ -5,7 +5,7 @@
 數學式：      
 $$
 y=
-\begin{cases}       
+\begin{cases}
 0,\,\,\omega_1 x_1 +\omega_2 x_2\lessgtr0\\
 1,\,\,\omega_1 x_1 +\omega_2 x_2>0\\  
 \end{cases}
