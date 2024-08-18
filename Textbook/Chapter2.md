@@ -39,7 +39,7 @@ $$
 
 （2）Sigmoid函數
 
-$$h=\frac{1}{1+\exp{-x}}$$ 
+$$h=\frac{1}{1+\exp{(-x)}}$$     
 
 （3）ReLu函數
 
@@ -53,6 +53,14 @@ $$
 
 （4）Softmax函數  
 
-$$y_k =\frac{\exp{a_k}}{\sigma_{i=1}^n\exp{a_i}}$$
+$$y_k =\frac{\exp{(a_k)}}{\sigma_{i=1}^n\exp{(a_i)}}$$
+
+
+
+
+
+
+
+
 
 
