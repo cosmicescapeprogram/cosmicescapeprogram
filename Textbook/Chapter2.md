@@ -53,7 +53,7 @@ $$
 
 （4）Softmax函數  
 
-$$y_k =\frac{\exp{(a_k)}}{\sigma_{i=1}^n\exp{(a_i)}}$$
+$$y_k =\frac{\exp{(a_k)}}{\sum_{i=1}^n\exp{(a_i)}}$$
 
 
 
