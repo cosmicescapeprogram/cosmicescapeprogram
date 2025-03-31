@@ -172,5 +172,83 @@ head -n 5 example.txt  # 显示 example.txt 的前 5 行
 tail example.txt  # 显示 example.txt 的最后 10 行
 tail -f /var/log/syslog  # 实时查看 syslog 日志文件的更新
 ```
+很好，我们继续下一部分！  
 
 ---
+
+### **第四部分：文件搜索与定位命令**
+这一部分介绍如何在 Linux 系统中查找文件和文本内容。
+
+#### **15. `find`（按条件查找文件）**
+`find` 命令用于按**文件名、类型、大小、时间等**条件查找文件。
+
+常见用法：
+- `find 目录 -name "文件名"` ：按名称查找文件
+- `find 目录 -type d` ：查找目录
+- `find 目录 -type f` ：查找文件
+- `find 目录 -size +10M` ：查找大于 10MB 的文件
+- `find 目录 -mtime -7` ：查找最近 7 天内修改的文件
+
+示例：
+```bash
+find /home -name "example.txt"  # 在 /home 目录查找名为 example.txt 的文件
+find /var/log -size +100M       # 在 /var/log 目录查找大于 100MB 的文件
+```
+
+#### **16. `locate`（快速查找文件）**
+`locate` 比 `find` 更快，但它依赖于系统的数据库（需要定期更新）。
+
+使用方式：
+- `locate 文件名` ：查找文件
+- `updatedb` ：手动更新数据库（需要 root 权限）
+
+示例：
+```bash
+locate example.txt  # 查找 example.txt 文件
+```
+如果 `locate` 没有找到文件，可以先运行：
+```bash
+sudo updatedb
+```
+
+#### **17. `grep`（搜索文本内容）**
+`grep` 用于在**文件内容**中查找特定的字符串。
+
+常见用法：
+- `grep "关键词" 文件名` ：在文件中查找关键词
+- `grep -r "关键词" 目录` ：递归搜索目录下的所有文件
+- `grep -i "关键词" 文件名` ：忽略大小写
+- `grep -n "关键词" 文件名` ：显示匹配行的行号
+
+示例：
+```bash
+grep "error" /var/log/syslog  # 查找 syslog 日志中的 error
+grep -r "main()" ~/projects/  # 在 ~/projects 目录中查找包含 main() 的文件
+```
+
+#### **18. `which`（查找可执行文件路径）**
+`which` 用于查找可执行文件的路径。
+
+示例：
+```bash
+which python  # 查找 python 命令的位置
+which ls      # 查找 ls 命令的位置
+```
+
+#### **19. `whereis`（查找命令的所有相关路径）**
+`whereis` 不仅能找到命令本身，还能找到它的**源码、文档等**。
+
+示例：
+```bash
+whereis ls  # 查找 ls 命令的可执行文件、源码和文档
+```
+
+#### **20. `type`（查看命令的类型）**
+`type` 用于查看某个命令是**内部命令**还是**外部命令**。
+
+示例：
+```bash
+type ls      # 查看 ls 是内部命令还是外部命令
+type cd      # 查看 cd 是内部命令还是外部命令
+```
+
