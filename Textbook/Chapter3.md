@@ -101,4 +101,77 @@ mv old_folder new_folder            # 目录改名
 ```
 
 ---
+---
 
+### **第三部分：文件查看命令**
+这一部分介绍如何查看文件内容，包括文本文件和日志文件。
+
+#### **9. `cat`（查看文件内容）**
+`cat` 用于查看文本文件的内容，适用于小型文件。
+
+- `cat 文件名` ：显示文件内容
+- `cat -n 文件名` ：显示时添加行号
+
+示例：
+```bash
+cat example.txt  # 显示 example.txt 的内容
+cat -n example.txt  # 显示 example.txt 的内容，并加上行号
+```
+
+#### **10. `tac`（反向查看文件内容）**
+`tac` 与 `cat` 相反，它从文件的最后一行开始向上显示。
+
+示例：
+```bash
+tac example.txt
+```
+
+#### **11. `more`（分页查看文件内容）**
+当文件内容较长时，可以使用 `more` 进行分页查看。
+
+- `more 文件名` ：逐页查看文件内容
+- 按 `空格键` 继续下一页，按 `q` 退出
+
+示例：
+```bash
+more large_file.txt
+```
+
+#### **12. `less`（更灵活的分页查看）**
+`less` 和 `more` 类似，但支持**上下滚动**。
+
+- `less 文件名` ：进入文件查看模式
+- 按 `↑` / `↓` 滚动
+- 按 `q` 退出
+
+示例：
+```bash
+less example.txt
+```
+
+#### **13. `head`（查看文件开头内容）**
+`head` 显示文件的前 10 行（默认值），可以指定显示行数。
+
+- `head 文件名` ：显示前 10 行
+- `head -n 20 文件名` ：显示前 20 行
+
+示例：
+```bash
+head example.txt  # 显示 example.txt 的前 10 行
+head -n 5 example.txt  # 显示 example.txt 的前 5 行
+```
+
+#### **14. `tail`（查看文件结尾内容）**
+`tail` 显示文件的最后 10 行（默认值），常用于查看日志文件。
+
+- `tail 文件名` ：显示最后 10 行
+- `tail -n 20 文件名` ：显示最后 20 行
+- `tail -f 文件名` ：**动态查看文件更新**（常用于监控日志）
+
+示例：
+```bash
+tail example.txt  # 显示 example.txt 的最后 10 行
+tail -f /var/log/syslog  # 实时查看 syslog 日志文件的更新
+```
+
+---
