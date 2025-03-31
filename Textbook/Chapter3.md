@@ -99,8 +99,6 @@ mv file1.txt /home/user/Documents/  # 移动 file1.txt 到 Documents 目录
 mv old_name.txt new_name.txt        # 重命名文件
 mv old_folder new_folder            # 目录改名
 ```
-
----
 ---
 
 ### **第三部分：文件查看命令**
